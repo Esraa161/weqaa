@@ -33,9 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 50,
-                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,7 +50,29 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.all(5),
 
                         child: Image.asset("assets/images/logo2.png",
-                        height: MediaQuery.of(context).size.height/5,
+                        height: MediaQuery.of(context).size.height/7,
+                          width: MediaQuery.of(context).size.width/1.2,),
+                      ),
+                    ],
+
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // CircleAvatar(
+                      //   backgroundColor: ColorManager.white,
+                      //   radius: 35,
+                      //
+                      //   backgroundImage:AssetImage('assas/profile image.jpg') ,
+                      //
+                      // ),
+                      Container(
+
+                        padding: EdgeInsets.all(5),
+
+                        child: Image.asset("assets/images/logo3.png",
+                          height: MediaQuery.of(context).size.height/10,
                           width: MediaQuery.of(context).size.width/1.2,),
                       ),
                     ],

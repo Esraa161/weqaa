@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 class UnderConstructionScreen extends StatefulWidget {
   const UnderConstructionScreen({super.key});
 
@@ -43,11 +44,18 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
             ),
             Expanded(
               child: Padding(
-                  padding: const EdgeInsets.only(right: 8,left: 8,bottom: 8,top: 5),
+                  padding: const EdgeInsets.only(right: 8,left: 8,),
                   child:Container(
-                            color: Colors.brown.shade50,
+                         //   color: Colors.brown.shade50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/bckground.png"),
+                                fit: BoxFit.cover
+
+                              ),
+                            ),
                             child:Padding(
-                                padding:  EdgeInsets.all(8.0),
+                                padding:  EdgeInsets.only(right: 8.0,left: 8),
                                 child:Column(
                                   children: [
                                     Expanded(
@@ -95,11 +103,14 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
                                                   ],
                                                 ),
                                                 // subtitle: Text('Flutter Example'),
-                                                onTap: () {
-                                                  setState(() {
-
-
-                                                  });
+                                                onTap: () async{
+                                                  final String url = "https://drive.google.com/drive/folders/1qtzx9rx6it4LJoieLRiD1RUqYIBjsYCb?usp=sharing";
+                                                  await launch(url,
+                                                  forceWebView: true, // Open in a WebView
+                                                  enableJavaScript: true,
+                                                  //enableDomStorage: true,
+                                                  //forceSafariVC: true,
+                                                  );
 
                                                   // Add your onTap functionality here
                                                   print('ListTile tapped!');
@@ -149,12 +160,14 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
                                                   ],
                                                 ),
                                                 // subtitle: Text('Flutter Example'),
-                                                onTap: () {
-                                                  setState(() {
-
-
-                                                  });
-
+                                                onTap: () async{
+                                                  final String url = "https://drive.google.com/drive/folders/1_ROLqB2-uzzzDen2emV13112yBM10gPL?usp=drive_link";
+                                                  await launch(url,
+                                                  forceWebView: true, // Open in a WebView
+                                                  enableJavaScript: true,
+                                                  //enableDomStorage: true,
+                                                  //forceSafariVC: true,
+                                                  );
                                                   // Add your onTap functionality here
                                                   print('ListTile tapped!');
                                                 },
@@ -203,12 +216,14 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
                                                   ],
                                                 ),
                                                 // subtitle: Text('Flutter Example'),
-                                                onTap: () {
-                                                  setState(() {
-
-
-                                                  });
-
+                                                onTap: () async{
+                                                  final String url = "https://drive.google.com/drive/folders/1AbDJL3Fl8AbQc6TDSJmnKvN2mZS3UuhR?usp=drive_link";
+                                                  await launch(url,
+                                                    forceWebView: true, // Open in a WebView
+                                                    enableJavaScript: true,
+                                                    //enableDomStorage: true,
+                                                    //forceSafariVC: true,
+                                                  );
                                                   // Add your onTap functionality here
                                                   print('ListTile tapped!');
                                                 },
@@ -257,12 +272,14 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
                                                   ],
                                                 ),
                                                 // subtitle: Text('Flutter Example'),
-                                                onTap: () {
-                                                  setState(() {
-
-
-                                                  });
-
+                                                onTap: () async{
+                                                  final String url = "https://drive.google.com/drive/folders/1SaWx4SJ3WjKKGOLjTreYaWFpAAJujbs7?usp=drive_link";
+                                                  await launch(url,
+                                                    forceWebView: true, // Open in a WebView
+                                                    enableJavaScript: true,
+                                                    //enableDomStorage: true,
+                                                    //forceSafariVC: true,
+                                                  );
                                                   // Add your onTap functionality here
                                                   print('ListTile tapped!');
                                                 },
@@ -311,12 +328,14 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
                                                   ],
                                                 ),
                                                 // subtitle: Text('Flutter Example'),
-                                                onTap: () {
-                                                  setState(() {
-
-
-                                                  });
-
+                                                onTap: () async{
+                                                  final String url = "https://drive.google.com/drive/folders/1qtzx9rx6it4LJoieLRiD1RUqYIBjsYCb?usp=sharing";
+                                                  await launch(url,
+                                                    forceWebView: true, // Open in a WebView
+                                                    enableJavaScript: true,
+                                                    //enableDomStorage: true,
+                                                    //forceSafariVC: true,
+                                                  );
                                                   // Add your onTap functionality here
                                                   print('ListTile tapped!');
                                                 },
@@ -394,5 +413,16 @@ class _UnderConstructionScreenState extends State<UnderConstructionScreen> {
         ),
       ),
     );
+  }
+  _launchURL(String url) async {
+    try {
+      if (await canLaunch(url)) {
+        await launch(url, forceWebView: true);
+      } else {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      print('Error launching URL: $e');
+    }
   }
 }
